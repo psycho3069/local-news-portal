@@ -65,7 +65,49 @@ class ArticleSeeder extends Seeder
             ]
         ];
 
-        foreach ($sampleArticles as $articleData) {
+        // Add more sample articles for better testing
+        $additionalArticles = [
+            [
+                'title' => 'পেশাদার গাড়ি চালকদের জন্য বিশেষ প্রশিক্ষণ কর্মশালা',
+                'slug' => 'peshadar-gari-chalokder-bishesh-proshikkhon',
+                'excerpt' => 'নারায়ণগঞ্জে পেশাদার গাড়ি চালকদের জন্য বিশেষ প্রশিক্ষণ কর্মশালার আয়োজন করা হয়েছে।',
+                'content' => 'নারায়ণগঞ্জে পেশাদার গাড়ি চালকদের জন্য বিশেষ প্রশিক্ষণ কর্মশালার আয়োজন করা হয়েছে। এই কর্মশালায় নিরাপদ গাড়ি চালানোর নিয়ম-কানুন এবং যানবাহন রক্ষণাবেক্ষণের বিষয়ে প্রশিক্ষণ দেওয়া হবে।',
+                'category_slug' => 'mohanogor',
+                'is_featured' => true,
+                'featured_image' => 'media/imgAll/2022July/SM/16-20250820142558.jpg'
+            ],
+            [
+                'title' => 'বাস ভাড়া বৃদ্ধির প্রতিবাদ জানিয়েছেন খোরশেদ',
+                'slug' => 'bus-vara-briddhi-protibad-khorshed',
+                'excerpt' => 'বাস ভাড়া বৃদ্ধির বিরুদ্ধে প্রতিবাদ জানিয়েছেন স্থানীয় নেতা খোরশেদ আলম।',
+                'content' => 'বাস ভাড়া বৃদ্ধির বিরুদ্ধে প্রতিবাদ জানিয়েছেন স্থানীয় নেতা খোরশেদ আলম। তিনি বলেন, সাধারণ মানুষের উপর এই অতিরিক্ত চাপ অন্যায়।',
+                'category_slug' => 'mohanogor',
+                'is_featured' => true,
+                'featured_image' => 'media/imgAll/2022July/SM/16-20250820151505.jpg'
+            ],
+            [
+                'title' => 'বিদ্রোহী প্যানেলের চাপে বিএনপি, ফুরফুরে জামায়াত',
+                'slug' => 'bidrohi-panel-chape-bnp-jamayat',
+                'excerpt' => 'স্থানীয় নির্বাচনে বিদ্রোহী প্যানেলের চাপে পড়েছে বিএনপি।',
+                'content' => 'স্থানীয় নির্বাচনে বিদ্রোহী প্যানেলের চাপে পড়েছে বিএনপি। জামায়াতে ইসলামীও এই পরিস্থিতিতে দ্বিধাগ্রস্ত।',
+                'category_slug' => 'politics',
+                'is_featured' => true,
+                'featured_image' => 'media/imgAll/2022July/SM/16-20250819160742.jpg'
+            ],
+            [
+                'title' => 'রিয়া গোপ স্টেডিয়াম: ময়লা ফেলা নিষিদ্ধ স্থানে আবর্জনার স্তূপ',
+                'slug' => 'ria-gop-stadium-moyла-abojona',
+                'excerpt' => 'রিয়া গোপ স্টেডিয়ামের আশেপাশে ময়লা ফেলা নিষিদ্ধ হলেও সেখানে আবর্জনার স্তূপ।',
+                'content' => 'রিয়া গোপ স্টেডিয়ামের আশেপাশে ময়লা ফেলা নিষিদ্ধ হলেও সেখানে আবর্জনার স্তূপ দেখা যাচ্ছে। স্থানীয়রা এই বিষয়ে কর্তৃপক্ষের দৃষ্টি আকর্ষণ করেছেন।',
+                'category_slug' => 'out-of-city',
+                'is_featured' => false,
+                'featured_image' => 'media/imgAll/2022July/SM/16-20250819161334.jpg'
+            ]
+        ];
+
+        $allArticles = array_merge($sampleArticles, $additionalArticles);
+
+        foreach ($allArticles as $articleData) {
             $category = $categories->where('slug', $articleData['category_slug'])->first();
             
             if ($category) {

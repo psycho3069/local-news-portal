@@ -34,6 +34,7 @@
     <!--==== CUSTOM CSS ====-->
     <link href="{{ asset('asset/css/style.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('asset/css/responsive.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/footer-fix.css') }}" rel="stylesheet" type="text/css">
     
     <style media="screen">
         .all-news-wrapper {width: 100%;}

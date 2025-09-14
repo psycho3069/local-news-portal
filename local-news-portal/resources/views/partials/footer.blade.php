@@ -1,76 +1,59 @@
 @php
     use App\Models\Setting;
-    $siteName = Setting::get('site_name_bn', 'নিউজ নারায়ণগঞ্জ');
-    $siteDescription = Setting::get('site_description', 'আমাদের সীমাবদ্ধতা অনেক, তবুও সত্য লেখার চেষ্টা অবিরাম।');
-    $contactPhone = Setting::get('contact_phone');
-    $contactEmail = Setting::get('contact_email');
-    $facebookUrl = Setting::get('facebook_url');
-    $twitterUrl = Setting::get('twitter_url');
+    $siteName = Setting::get('site_name_bn', 'দ্যা নিউজ নারায়ণগঞ্জ ডটকম');
+    $contactEmail = Setting::get('contact_email', 'info@newsnarayanganj.com');
+    $facebookUrl = Setting::get('facebook_url', 'https://web.facebook.com/newsnarayanganjdotcom');
+    $youtubeUrl = Setting::get('youtube_url', 'https://www.youtube.com/@newsnarayanganj');
 @endphp
 
-<footer class="footer-area" style="background: #1da255; padding: 40px 0; color: white;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="footer-logo">
-                    <img src="{{ asset('media/common/newsnarayanganj24.jpg') }}" alt="News Narayanganj" style="max-width: 200px;">
-                </div>
-                <p style="margin-top: 15px;">{{ $siteDescription }}</p>
-                
-                @if($contactPhone || $contactEmail)
-                    <div style="margin-top: 20px;">
-                        @if($contactPhone)
-                            <p><i class="fa fa-phone"></i> {{ $contactPhone }}</p>
-                        @endif
-                        @if($contactEmail)
-                            <p><i class="fa fa-envelope"></i> {{ $contactEmail }}</p>
-                        @endif
-                    </div>
-                @endif
-            </div>
-            <div class="col-md-4">
-                <div class="footer-menu">
-                    <h4>গুরুত্বপূর্ণ লিংক</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 8px;"><a href="{{ route('home') }}" style="color: #fff; text-decoration: none;"><i class="fa fa-angle-right"></i> হোম</a></li>
-                        <li style="margin-bottom: 8px;"><a href="{{ route('page.show', 'contact') }}" style="color: #fff; text-decoration: none;"><i class="fa fa-angle-right"></i> যোগাযোগ</a></li>
-                        <li style="margin-bottom: 8px;"><a href="{{ route('page.show', 'privacy-policy') }}" style="color: #fff; text-decoration: none;"><i class="fa fa-angle-right"></i> গোপনীয়তা নীতি</a></li>
-                        <li style="margin-bottom: 8px;"><a href="{{ route('page.show', 'terms-conditions') }}" style="color: #fff; text-decoration: none;"><i class="fa fa-angle-right"></i> শর্তাবলী</a></li>
-                        <li style="margin-bottom: 8px;"><a href="{{ route('archives') }}" style="color: #fff; text-decoration: none;"><i class="fa fa-angle-right"></i> আর্কাইভ</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="footer-gallery">
-                    <h4>গ্যালারি</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 8px;"><a href="{{ route('photo-gallery.index') }}" style="color: #fff; text-decoration: none;"><i class="fa fa-angle-right"></i> ফটো গ্যালারি</a></li>
-                        <li style="margin-bottom: 8px;"><a href="{{ route('video-gallery.index') }}" style="color: #fff; text-decoration: none;"><i class="fa fa-angle-right"></i> ভিডিও গ্যালারি</a></li>
-                    </ul>
-                    
-                    @if($facebookUrl || $twitterUrl)
-                        <div style="margin-top: 20px;">
-                            <h5>সামাজিক যোগাযোগ</h5>
-                            <div>
-                                @if($facebookUrl)
-                                    <a href="{{ $facebookUrl }}" target="_blank" style="color: #fff; margin-right: 10px; font-size: 20px;">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                @endif
-                                @if($twitterUrl)
-                                    <a href="{{ $twitterUrl }}" target="_blank" style="color: #fff; margin-right: 10px; font-size: 20px;">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                @endif
+<footer>
+    <div class="footer-middle">
+        <div class="container custom-container">
+            <div class="row custom-row footer-middle-row">
+                <div class="col-lg-8 col-md-12 custom-padding">
+                    <div class="footer-details">
+                        <h3>সম্পাদক : <a class="owner-text" href="#" style="color: #fff;">শাহজাহান শামীম</a></h3>
+                        <span><i class="fa fa-map-marker"></i> ১৯৩ প্রেসিডেন্ট রোড, সিরাজ ম্যানশন, চাষাঢ়া, নারায়ণগঞ্জ।</span>
+                        <br>
+                        <span class="small small-email">
+                            <i class="fa fa-envelope"></i> <a href="mailto:{{ $contactEmail }}" style="color: #fff;">{{ $contactEmail }}</a><br>
+                        </span>
+                        <div class="social-icon-wrapper">
+                            <div class="social-icon">
+                                <a target="_blank" href="{{ $facebookUrl }}"><span>Facebook</span></a>
+                                <a href="#"><span>Twitter</span></a>
+                                <a href="#"><span>Google+</span></a>
+                                <a target="_blank" href="{{ $youtubeUrl }}"><span>Youtube</span></a>
+                                <a href="#"><span>Pinterest</span></a>
+                                <a href="#"><span>Rss</span></a>
                             </div>
                         </div>
-                    @endif
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12 custom-padding">
+                    <div class="footer-menu footer-col-1">
+                        <ul>
+                            <li><a href="{{ route('page.show', 'terms-conditions') }}" target="_blank">ব্যবহার বিধি</a></li>
+                            <li><a href="{{ route('page.show', 'privacy-policy') }}" target="_blank">গোপনীয়তা নীতি</a></li>
+                            <li><a href="{{ route('page.show', 'contact') }}" target="_blank">যোগাযোগ</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
-            <div class="col-md-12 text-center">
-                <p>&copy; {{ date('Y') }} {{ $siteName }}. All rights reserved. | Developed with Laravel 12</p>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container custom-container">
+            <div class="row custom-row footer-bottom-row">
+                <div class="col-md-6 col-12 custom-padding">
+                    <p>© {{ date('Y') }} সর্বস্বত্ব সংরক্ষিত , {{ $siteName }} ।</p>
+                </div>
+                <div class="col-md-6 col-12 custom-padding">
+                    <div class="design-link">
+                        <p>Design & Developed by <a target="_blank" href="http://www.bongosoftbd.com/">Bongosoft Ltd.</a></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
